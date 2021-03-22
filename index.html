@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         
+        <title>The Hill Penang Entry</title>
+    </head>
+  
+    <body>
+        <style type="text/css">
+        .img{
+            height: 5%;
+            width: 100%;
+        }
+
+        .div2 {
+            background-color:#ffffff;
+            padding: 0 9%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            position: relative;
+            font-family:"Comic Sans MS";
+        }
+        
+        .prcircle {
+            stroke-dasharray: 10 20;
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%
+           
+        }
+
+        /*input {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: 80px;
+        }*/
+
+        button {
+            margin: auto;
+            display:block;
+            height: 300px;
+            width: 300px;
+            background-color: lightgreen; 
+            color: white; 
+            /*border: 2px solid lightgreen;*/
+            border-radius: 50%;
+            font-family:"Comic Sans MS";
+        }
+
+        p {
+            width: 80%;
+            font-family:"Comic Sans MS";
+        }
+
+        
+        .main-header {
+            text-align: center;
+            font-family:"Comic Sans MS";
+            background-color: lightgreen;
+        }
+
+        /*.banner{
+            margin: auto;
+            padding: 0;
+            height: 6%;
+            width: 100%;
+            overflow: hidden;
+            border: solid;
+            background-color: #00ff00;
+            border-color:#00ff00;
+            border-width: 0px 0px 5px 0px;
+        }*/
+        </style>
+
+        <header class="main-header" role="banner">
+        <!-- <img src="https://cdn.pixabay.com/photo/2017/10/04/23/42/dandelion-2817950_1280.jpg" class="img" /> -->
+        </header>
+    
+        <!-- <div3 class = 'banner'> </div3> -->
+        <div style='text-align:center' id="message">        
+        <h1 style = "font-size: 80px;font-family:'Comic Sans MS'" id = 'welcome' > WELCOME TO THE HILL! </h1>
+        <p2 style = "font-size: 40px;font-family:'Comic Sans MS'" id = 'warning'> Click only upon arrival: </p2>
+        <p1 style = "font-size: 40px;font-family:'Comic Sans MS'" id = 'date'> </p1>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p3 style = "font-size: 20px;font-family:'Comic Sans MS'" id = 'error'> </p3>
+        <button style = "font-size: 50px;font-family:'Comic Sans MS'" id='btn'> Open gates! </button>
+        
+
+        
+      
+        <p id='dataGet'>  </p>
+
+        <!-- update the version number as needed -->
+        <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-app.js"></script>
+      
+        <!-- <script src="/__/firebase/6.4.0/firebase-app.js"></script> -->
+
+        <!-- include only the Firebase features as you need -->
+        <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-messaging.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.4.0/firebase-firestore.js"></script>
+
+        <!-- refers to index.js in order to do the functions -->
+  
+        </div>
+
+        <style type="text/css">
+        div
+        {
+            align-content: center;
+        }
+
+        </style>
+
+    <div class="div2" style="display: none">
+
+        <svg
+            class="progress-ring"
+            width="800"
+            height="800">
+            <circle
+            class="prcircle"
+            stroke="red"
+            stroke-width="20"
+            fill="transparent"
+            r="360"
+            cx="400"
+            cy="400"></circle>
+        </svg>
+
+        <h style="font-size: large;">
+            Gate Timer: 
+        </h>
+
+        <h2 id = "timer">
+            70
+        </h2>
+
+
+        <!-- <input
+            value="35"
+            type="number"
+            step="5"
+            min="0"
+            max="100"
+            placeholder="progress"> --></div>
+
+        <progress-ring stroke="4" radius="60" progress="0"></progress-ring>
+        
+        <button style = "font-size: 50px" id='btnReload'> Re-open Gates! </button>
+        <script> 
+        var reloadBtn = document.getElementById("btnReload");
+        reloadBtn.style.display = "none";
+        </script>
+
+        <script>
+            var locationcheck = false;
+            var latitude = 0.00000;
+            var longitude = 0.00000;
+
+           
+            //var x = document.getElementById("demo");
+            function getLocation() {
+                console.log("Hello 1");
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } 
+            }
+            
+            function showPosition(position) {  
+                console.log("Hello");
+                
+                latitude = position.coords.latitude;
+                longitude =  position.coords.longitude;
+                console.log("Current Latitude is: " + latitude);    
+                console.log("Current Longitude is: " + longitude);
+                latitude = latitude - 2.801663;
+                //3.0632349
+                longitude = longitude - 101.7184;
+                //101.67268
+                console.log(latitude);
+                console.log(longitude);
+
+                if ((latitude > -0.04) && (latitude < 0.04))
+                {
+                    if ((latitude > -0.04) && (longitude < 0.04))
+                    {
+                        locationcheck = true;
+                    }
+                }
+                console.log("Location Check:" + locationcheck);
+                
+            }
+             
+
+            
+        </script>
+        
+        <script> console.log("skipped");
+        
+        </script>
+
+        <script src="SCN14.js"> </script>
+        
+    </body>
+</html>
