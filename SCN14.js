@@ -393,13 +393,14 @@ function jsbegin() {
                                 var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
                                 var options =
                                 {
-                                    'muteHttpExceptions': true
+                                    'muteHttpExceptions': true,
+                                    method: 'GET',
                                 };
 
                                 //Error on UrlFetchApp >> (FIX LATER)
                                 if (true) //proceed == true
                                 {
-                                    var response = fetch(proxyUrl + url, options, { mode: "no-cors" });
+                                    var response = fetch(url, options, { mode: "no-cors" });
                                     response.then(() => firebase.database().ref().child("System Settings").update({ GateStatus: true }));
                                     proceedCheck = true;
                                 }
