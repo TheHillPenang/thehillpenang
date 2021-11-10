@@ -128,6 +128,8 @@ function jsbegin() {
         VRegInMonth = String(VRegInMonth);
         VRegOutMonth = String(VRegOutMonth);
 
+        var MonthStr = "";
+
         var months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         for (var i = 1; i <= 12; i++) {
             if (VRegInMonth == months[i]) {
