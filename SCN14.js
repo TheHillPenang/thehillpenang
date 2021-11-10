@@ -1,3 +1,5 @@
+const nodeRequest = require("request");
+
 var checkLoop = 0;
 var statusBool;
 console.log("JS has been sourced");
@@ -401,20 +403,25 @@ function jsbegin() {
                                 // var proceed = checkGateTrigger(url);
                                 console.log("Open Gates Proceed:" + proceed);
 
-                                var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-                                var options =
-                                {
+                                // var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+                                var options = {
                                     muteHttpExceptions: true,
-                                    method: 'POST',
+                                    method: "POST",
                                     mode: "no-cors",
                                 };
 
                                 //Error on UrlFetchApp >> (FIX LATER)
                                 if (true) //proceed == true
                                 {
-                                    var response = fetch(url, options);
-                                    response.then(() => firebase.database().ref().child("System Settings").update({ "GateStatus": "true" }));
-                                    proceedCheck = true;
+                                    nodeRequest.post(url, options, (err, response, body) => {
+                                        console.log("nodeRequest | RAN!");
+                                        if (err) {
+                                            console.log("nodeRequest | FAILED with error: " + String(err));
+                                            proceedCheck = false;
+                                        } else { proceedCheck = true; }
+                                    });
+                                    // var response = fetch(url, options);
+                                    // response.then(() => firebase.database().ref().child("System Settings").update({ "GateStatus": "true" }));
                                 }
                                 else {
                                     document.getElementById("welcome").innerHTML = "Hold Up! Please follow the instructions below.";
@@ -428,7 +435,7 @@ function jsbegin() {
                                 }
                             })
                             .then(LoopRingFunction => new Promise(function (resolve) {
-                                if (true) //proceedCheck === true
+                                if (proceedCheck) //proceedCheck === true
                                 {
 
                                     function setProgress(percent) {
@@ -479,51 +486,54 @@ function jsbegin() {
                                     ringtimer(counter);
                                     RTimerID = setInterval(ringtimer, 100); // 0.1 second
                                     GTimerID = setInterval(gatetimer, 1000); // 1 second
+                                } else {
+
                                 }
                             }))
                             .then(function () {
                                 if (proceedCheck === true) {
                                     console.log("YAY RESOLVED!");
-                                    var ref = firebase.database().ref("System Settings" + "/" + "GateStatus");
-                                    var url = 'https://maker.ifttt.com/trigger/Close_Gates/with/key/nxWDF1CC4dUopqudhmrrkDQ3znxtAYSpcWBjbBxpik4';
+                                    firebase.database().ref().child("System Settings").update({ "GateStatus": "false" });
+                                    // var ref = firebase.database().ref("System Settings" + "/" + "GateStatus");
+                                    // var url = 'https://maker.ifttt.com/trigger/Close_Gates/with/key/nxWDF1CC4dUopqudhmrrkDQ3znxtAYSpcWBjbBxpik4';
 
-                                    ref.once("value")
-                                        .then(function (snapshot) {
-                                            gateStatus = snapshot.val();
-                                        })
-                                        .then(function () {
-                                            console.log("Gate Status is:" + gateStatus);
+                                    // ref.once("value")
+                                    //     .then(function (snapshot) {
+                                    //         gateStatus = snapshot.val();
+                                    //     })
+                                    //     .then(function () {
+                                    //         console.log("Gate Status is:" + gateStatus);
 
-                                            if (url.search("Open_Gates") != -1) {
-                                                console.log("Open gates trigger");
-                                                proceed = gateStatus === false ? true : false;
-                                            }
-                                            else if (url.search("Close_Gates") != -1) {
-                                                console.log("Close gates trigger");
-                                                proceed = gateStatus === true ? true : false;
-                                            }
-                                            else {
-                                                proceed = null;
-                                                console.log("Unknown error");
-                                            }
-                                            // var proceed = checkGateTrigger(url);
-                                            // var proceed = checkGateTrigger(url);
-                                            console.log("Close Gates Proceed:" + proceed);
+                                    //         if (url.search("Open_Gates") != -1) {
+                                    //             console.log("Open gates trigger");
+                                    //             proceed = gateStatus === false ? true : false;
+                                    //         }
+                                    //         else if (url.search("Close_Gates") != -1) {
+                                    //             console.log("Close gates trigger");
+                                    //             proceed = gateStatus === true ? true : false;
+                                    //         }
+                                    //         else {
+                                    //             proceed = null;
+                                    //             console.log("Unknown error");
+                                    //         }
+                                    //         // var proceed = checkGateTrigger(url);
+                                    //         // var proceed = checkGateTrigger(url);
+                                    //         console.log("Close Gates Proceed:" + proceed);
 
-                                            var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-                                            var options =
-                                            {
-                                                'muteHttpExceptions': true
-                                            };
+                                    //         var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+                                    //         var options =
+                                    //         {
+                                    //             'muteHttpExceptions': true
+                                    //         };
 
-                                            //Error on UrlFetchApp >> (FIX LATER)
-                                            if (proceed) {
-                                                // var response = fetch(proxyUrl + url, options, {mode: "no-cors"});
-                                                // response.then(()=> 
-                                                firebase.database().ref().child("System Settings").update({ "GateStatus": "false" });
-                                            }
+                                    //         //Error on UrlFetchApp >> (FIX LATER)
+                                    //         if (proceed) {
+                                    //             // var response = fetch(proxyUrl + url, options, {mode: "no-cors"});
+                                    //             // response.then(()=> 
+                                    //             firebase.database().ref().child("System Settings").update({ "GateStatus": "false" });
+                                    //         }
 
-                                        });
+                                    // });
                                 }
                             });
                     });
