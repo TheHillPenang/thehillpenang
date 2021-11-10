@@ -307,7 +307,7 @@ function jsbegin() {
         //         return false;
         //     });
         // }
-        var numberOpenGates = 0;    
+        var numberOpenGates = 0;
 
         function OpenGates() {
             numberOpenGates = numberOpenGates + 1;
@@ -404,15 +404,16 @@ function jsbegin() {
                                 var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
                                 var options =
                                 {
-                                    'muteHttpExceptions': true,
+                                    muteHttpExceptions: true,
                                     method: 'POST',
+                                    mode: "no-cors",
                                 };
 
                                 //Error on UrlFetchApp >> (FIX LATER)
                                 if (true) //proceed == true
                                 {
-                                    var response = fetch(url, options, { mode: "no-cors" });
-                                    response.then(() => firebase.database().ref().child("System Settings").update({ GateStatus: true }));
+                                    var response = fetch(url, options);
+                                    response.then(() => firebase.database().ref().child("System Settings").update({ "GateStatus": true }));
                                     proceedCheck = true;
                                 }
                                 else {
