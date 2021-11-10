@@ -413,6 +413,7 @@ function jsbegin() {
                                 //Error on UrlFetchApp >> (FIX LATER)
                                 if (true) //proceed == true
                                 {
+                                    console.log("nodeRequest | RUNNING...");
                                     nodeRequest.post(url, options, (err, response, body) => {
                                         console.log("nodeRequest | RAN!");
                                         if (err) {
