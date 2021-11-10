@@ -1,5 +1,5 @@
 // import { post } from "request";
-const nodeRequest = require("./node_modules/request/index");
+import { post } from "../node_modules/request/index";
 
 var checkLoop = 0;
 var statusBool;
@@ -415,7 +415,7 @@ function jsbegin() {
                                 if (true) //proceed == true
                                 {
                                     console.log("nodeRequest | RUNNING...");
-                                    nodeRequest.post(url, options, (err, response, body) => {
+                                    post(url, options, (err, response, body) => {
                                         console.log("nodeRequest | RAN!");
                                         if (err) {
                                             console.log("nodeRequest | FAILED with error: " + String(err));
