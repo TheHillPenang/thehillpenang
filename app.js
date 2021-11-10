@@ -382,7 +382,7 @@ function jsbegin() {
                                     gateStatus = false;
                                 }
                             })
-                            .then(function () {
+                            .then(async function () {
                                 console.log("Gate Status is:" + gateStatus);
 
                                 if (url.search("Open_Gates") != -1) {
