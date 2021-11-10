@@ -307,9 +307,7 @@ function jsbegin() {
         //         return false;
         //     });
         // }
-        var numberOpenGates = 0;
-
-
+        var numberOpenGates = 0;    
 
         function OpenGates() {
             numberOpenGates = numberOpenGates + 1;
@@ -407,7 +405,7 @@ function jsbegin() {
                                 var options =
                                 {
                                     'muteHttpExceptions': true,
-                                    method: 'GET',
+                                    method: 'POST',
                                 };
 
                                 //Error on UrlFetchApp >> (FIX LATER)
