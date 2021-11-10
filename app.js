@@ -1,6 +1,3 @@
-// import { post } from "request";
-import { post } from "../node_modules/request/index";
-
 var checkLoop = 0;
 var statusBool;
 console.log("JS has been sourced");
@@ -406,7 +403,6 @@ function jsbegin() {
 
                                 // var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
                                 var options = {
-                                    muteHttpExceptions: true,
                                     method: "POST",
                                     mode: "no-cors",
                                 };
@@ -414,14 +410,17 @@ function jsbegin() {
                                 //Error on UrlFetchApp >> (FIX LATER)
                                 if (true) //proceed == true
                                 {
-                                    console.log("nodeRequest | RUNNING...");
-                                    post(url, options, (err, response, body) => {
-                                        console.log("nodeRequest | RAN!");
-                                        if (err) {
-                                            console.log("nodeRequest | FAILED with error: " + String(err));
-                                            proceedCheck = false;
-                                        } else { proceedCheck = true; }
-                                    });
+                                    console.log("fetch | RUNNING...");
+                                    await fetch(url, options);
+                                    console.log("fetch | RAN!");
+                                    proceedCheck = true;
+                                    // post(url, options, (err, response, body) => {
+                                    //     console.log("nodeRequest | RAN!");
+                                    //     if (err) {
+                                    //         console.log("nodeRequest | FAILED with error: " + String(err));
+                                    //         proceedCheck = false;
+                                    //     } else { proceedCheck = true; }
+                                    // });
                                     // var response = fetch(url, options);
                                     // response.then(() => firebase.database().ref().child("System Settings").update({ "GateStatus": "true" }));
                                 }

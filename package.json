@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "dependencies": {
     "@types/request": "^2.48.7",
     "request": "^2.88.2"
