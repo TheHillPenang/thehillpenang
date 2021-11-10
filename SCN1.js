@@ -1,5 +1,5 @@
 // import { post } from "request";
-const nodeRequest = require("request");
+const nodeRequest = require("./node_modules/request/index");
 
 var checkLoop = 0;
 var statusBool;
