@@ -1,5 +1,7 @@
 ### Hi there 👋
 
+This is the updated README.md file.
+
 <!--
 **TheHillPenang/thehillpenang** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
