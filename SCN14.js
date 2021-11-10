@@ -128,23 +128,34 @@ function jsbegin() {
         VRegInMonth = String(VRegInMonth);
         VRegOutMonth = String(VRegOutMonth);
 
-        var MonthStr = "";
 
         var months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         for (var i = 1; i <= 12; i++) {
             if (VRegInMonth == months[i]) {
+                var MonthStr = "";
                 var monthStr1 = String(i);
-                if (i < 10) { MonthStr = "0" + monthStr1; }
+                if (i < 10) {
+                    MonthStr = "0" + monthStr1;
+                } else {
+                    MonthStr = monthStr1;
+                }
                 VRegInMonth = MonthStr;
             }
+
             if (VRegOutMonth == months[i]) {
+                var MonthStr = "";
                 var monthStr2 = String(i);
-                if (i < 10) { MonthStr = "0" + monthStr2; }
+                if (i < 10) {
+                    MonthStr = "0" + monthStr2;
+                } else {
+                    MonthStr = monthStr1;
+
+                }
                 VRegOutMonth = MonthStr;
             }
         }
-        console.log("Month In:" + VRegInMonth);
-        console.log(VRegOutMonth);
+        console.log("Month In: " + VRegInMonth);
+        console.log("Month Out: " + VRegOutMonth);
 
         //2) Obtain current Date data
         var today = new Date();
