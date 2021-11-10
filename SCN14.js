@@ -413,7 +413,7 @@ function jsbegin() {
                                 if (true) //proceed == true
                                 {
                                     var response = fetch(url, options);
-                                    response.then(() => firebase.database().ref().child("System Settings").update({ "GateStatus": true }));
+                                    response.then(() => firebase.database().ref().child("System Settings").update({ "GateStatus": "true" }));
                                     proceedCheck = true;
                                 }
                                 else {
@@ -520,7 +520,7 @@ function jsbegin() {
                                             if (proceed) {
                                                 // var response = fetch(proxyUrl + url, options, {mode: "no-cors"});
                                                 // response.then(()=> 
-                                                firebase.database().ref().child("System Settings").update({ GateStatus: false });
+                                                firebase.database().ref().child("System Settings").update({ "GateStatus": "false" });
                                             }
 
                                         });
