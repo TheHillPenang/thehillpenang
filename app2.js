@@ -473,7 +473,7 @@ function jsbegin() {
 
                                     function gatetimer() {
                                         // console.log("Gate timer runs");
-                                        if (Ttimer >= 0) {
+                                        if (Ttimer > 0) {
                                             Ttimer -= 1;
                                             console.log("Countdown: " + Ttimer);
                                             document.getElementById("timer").innerHTML = "Duration: " + Ttimer;
