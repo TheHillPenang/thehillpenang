@@ -147,6 +147,8 @@ function jsbegin() {
         }
         console.log("FCurrentMonth is: " + FCurrentMonth);
 
+        // REMOVED DIGIT 0 - TO FORMAT SAME AS SYSTEM DATE
+
         // if (VRegInDay.toString().length < 2) {
         //     VRegInDay = '0' + VRegInDay;
         // }
