@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "@types/request": "^2.48.7",
-    "request": "^2.88.2"
+    "firebase": "^9.4.0"
   }
 }

@@ -50,27 +50,6 @@ if (true) {
             var errorMessage = error.message;
             // ...
         })
-
-    //      firebase.auth().onAuthStateChanged((user) => {
-    //   if (user) {
-    //     // User is signed in, see docs for a list of available properties
-    //     // https://firebase.google.com/docs/reference/js/firebase.User
-    //     confirm('YOYO');
-    //     var uid = user.uid;
-    //     // ...
-    //   } else {
-    //     // User is signed out
-    //     // ...
-    //   }
-    // });
-
-    // if (signedIn) {
-
-    // document.getElementById("btn").onclick = function() {jsbegin()};  //the moment when button is clicked, function runs! 
-    // }
-    // else {
-    //     console.log('Failed signIn');
-    // }
 }
 else {
     console.log("Location is false!");
@@ -167,12 +146,13 @@ function jsbegin() {
             FCurrentMonth = '0' + FCurrentMonth;
         }
         console.log("FCurrentMonth is: " + FCurrentMonth);
-        if (VRegInDay.toString().length < 2) {
-            VRegInDay = '0' + VRegInDay;
-        }
-        if (VRegOutDay.toString().length < 2) {
-            VRegOutDay = '0' + VRegOutDay;
-        }
+
+        // if (VRegInDay.toString().length < 2) {
+        //     VRegInDay = '0' + VRegInDay;
+        // }
+        // if (VRegOutDay.toString().length < 2) {
+        //     VRegOutDay = '0' + VRegOutDay;
+        // }
         // var FCurrentDay = today.getDate();
 
         //Converting to String
