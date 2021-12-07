@@ -1,20 +1,20 @@
+import config from "./config.js";
+
 var checkLoop = 0;
 var statusBool;
 console.log("JS has been sourced");
 
 //alert("code: " + code);
+const { api_key } = config;
 
 //locationcheck is true?
 if (true) {
     console.log("location verified, js file access");
+    console.log("API KEY is:");
+    console.log(api_key);
 
     var urlParams = new URLSearchParams(location.search);
-
-    //urlParams.has('type');  // true
     var code = urlParams.get('code');
-    //alert(urlParams.get('code')); // 1234
-    // urlParams.getAll('id'); // ["1234"]
-    // urlParams.toString();   // type=product&id=1234
 
     var firebaseConfig =
     {
