@@ -1,32 +1,17 @@
-import config from "./config.js";
+import firebaseConfig from "./config.js";
 
 var checkLoop = 0;
 var statusBool;
 console.log("JS has been sourced");
 
 //alert("code: " + code);
-const { api_key } = config;
 
 //locationcheck is true?
 if (true) {
     console.log("location verified, js file access");
-    console.log("API KEY is:");
-    console.log(api_key);
 
     var urlParams = new URLSearchParams(location.search);
     var code = urlParams.get('code');
-
-    var firebaseConfig =
-    {
-        apiKey: "AIzaSyD95Aj1XlpzdlK1319hMhztOF6Izbdj9EY",
-        authDomain: "thehillpenang-e6721.firebaseapp.com",
-        databaseURL: "https://thehillpenang-e6721.firebaseio.com",
-        projectId: "thehillpenang-e6721",
-        storageBucket: "thehillpenang-e6721.appspot.com",
-        messagingSenderId: "621087482659",
-        appId: "1:621087482659:web:048d251f3aa70125c12296",
-        measurementId: "G-DT0ZMRPC20"
-    };
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
