@@ -26,12 +26,11 @@ if (true) {
     var options = {
         method: "POST",
         mode: "no-cors",
-        body: {
-            "value1": "Failed to Sign In Anonymously",
-            "value2": code
-        }
+        body: "{value1: Testing123, value2: 1234}"
     };
-    fetch(errorUrl, options);
+    fetch(errorUrl, options).catch((err) => {
+        console.log("Test notification error with: " + err);
+    });
 
     firebase.auth().signInAnonymously()
         .then(() => {
