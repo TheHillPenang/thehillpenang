@@ -25,11 +25,10 @@ if (true) {
 
     var options = {
         method: "POST",
-        mode: "no-cors",
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ value1: "Testing123", value2: code })
+        body: JSON.stringify({ value1: "Testing123", value2: "12433" })
     }
 
     fetch(errorUrl, options).catch((err) => {
