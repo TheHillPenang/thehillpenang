@@ -337,7 +337,8 @@ function jsbegin() {
                     })
                     .then(function () {
                         var ref = firebase.database().ref("System Settings" + "/" + "GateStatus");
-                        var url = 'https://maker.ifttt.com/trigger/Open_Gates/with/key/nxWDF1CC4dUopqudhmrrkDQ3znxtAYSpcWBjbBxpik4';
+                        // var url = 'https://maker.ifttt.com/trigger/Open_Gates/with/key/nxWDF1CC4dUopqudhmrrkDQ3znxtAYSpcWBjbBxpik4';
+                        var url = 'https://google.com';
 
                         ref.once("value")
                             .then(function (snapshot) {
