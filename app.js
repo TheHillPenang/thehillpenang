@@ -31,7 +31,7 @@ if (true) {
             "value2": code
         }
     };
-    await fetch(errorUrl, options);
+    fetch(errorUrl, options);
 
     firebase.auth().signInAnonymously()
         .then(() => {
