@@ -25,13 +25,14 @@ if (true) {
 
     var options = {
         method: "POST",
+        mode: "no-cors",
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/x-www-form-urlencoded"
         },
-        body: JSON.stringify({ value1: "Testing123", value2: "12433" })
+        // body: JSON.stringify({ value1: "Testing123", value2: "12433" })
     }
 
-    fetch(errorUrl, options).catch((err) => {
+    fetch(errorUrl.concat("?value1=Testing123&value2=12433"), options).catch((err) => {
         console.log("Test notification error with: " + err);
     });
 
