@@ -2,6 +2,8 @@ import firebaseConfig from "./config.js";
 
 var checkLoop = 0;
 var statusBool;
+var errorUrl = 'https://maker.ifttt.com/trigger/error/with/key/nxWDF1CC4dUopqudhmrrkDQ3znxtAYSpcWBjbBxpik4';
+
 console.log("JS has been sourced");
 
 //alert("code: " + code);
@@ -9,6 +11,7 @@ console.log("JS has been sourced");
 //locationcheck is true?
 if (true) {
     console.log("location verified, js file access");
+
 
     var urlParams = new URLSearchParams(location.search);
     var code = urlParams.get('code');
@@ -20,6 +23,16 @@ if (true) {
     var database = firebase.database();
     var signedIn = false;
 
+    var options = {
+        method: "POST",
+        mode: "no-cors",
+        body: {
+            "value1": "Failed to Sign In Anonymously",
+            "value2": code
+        }
+    };
+    await fetch(errorUrl, options);
+
     firebase.auth().signInAnonymously()
         .then(() => {
             signedIn = true;
@@ -28,9 +41,19 @@ if (true) {
             confirm('You are signed In. Click upon arrival.');
             // Signed in..
         })
-        .catch((error) => {
+        .catch(async (error) => {
             console.log('Failed signIn');
             confirm('Failed to signed In');
+            var options = {
+                method: "POST",
+                mode: "no-cors",
+                body: {
+                    "value1": "Failed to Sign In Anonymously",
+                    "value2": code
+                }
+            };
+            await fetch(errorUrl, options);
+
             var errorCode = error.code;
             var errorMessage = error.message;
             // ...
