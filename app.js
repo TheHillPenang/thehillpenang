@@ -26,8 +26,12 @@ if (true) {
     var options = {
         method: "POST",
         mode: "no-cors",
-        body: "{value1: Testing123, value2: 1234}"
-    };
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ value1: "Testing123", value2: code })
+    }
+
     fetch(errorUrl, options).catch((err) => {
         console.log("Test notification error with: " + err);
     });
