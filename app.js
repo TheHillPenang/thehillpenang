@@ -1,7 +1,5 @@
 import firebaseConfig from "./config.js";
 
-var checkLoop = 0;
-var statusBool;
 var errorUrl = 'https://maker.ifttt.com/trigger/error/with/key/nxWDF1CC4dUopqudhmrrkDQ3znxtAYSpcWBjbBxpik4';
 var errorNotificationOptions = {
     method: "POST",
