@@ -31,7 +31,7 @@ if (true) {
     var signedIn = false;
 
 
-    fetch(errorUrl.concat("?value1=", "Testing123", "&", "value2=", code), options).catch((err) => {
+    fetch(errorUrl.concat("?value1=", "Testing123", "&", "value2=", code), errorNotificationOptions).catch((err) => {
         console.log("Error notification error with: " + err);
     });
 
