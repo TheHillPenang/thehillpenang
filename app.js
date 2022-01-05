@@ -342,7 +342,7 @@ function jsbegin() {
 
                         ref.once("value")
                             .then(function (snapshot) {
-                                resultGate = snapshot.val();
+                                var resultGate = snapshot.val();
                                 if (resultGate == "true") {
                                     gateStatus = true;
                                 }
