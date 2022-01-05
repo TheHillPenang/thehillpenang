@@ -3,6 +3,13 @@ import firebaseConfig from "./config.js";
 var checkLoop = 0;
 var statusBool;
 var errorUrl = 'https://maker.ifttt.com/trigger/error/with/key/nxWDF1CC4dUopqudhmrrkDQ3znxtAYSpcWBjbBxpik4';
+var errorNotificationOptions = {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+}
 
 console.log("JS has been sourced");
 
@@ -23,17 +30,9 @@ if (true) {
     var database = firebase.database();
     var signedIn = false;
 
-    var options = {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        // body: JSON.stringify({ value1: "Testing123", value2: "12433" })
-    }
 
-    fetch(errorUrl.concat("?value1=Testing123&value2=12433"), options).catch((err) => {
-        console.log("Test notification error with: " + err);
+    fetch(errorUrl.concat("?value1=", "Testing123", "&", "value2=", code), options).catch((err) => {
+        console.log("Error notification error with: " + err);
     });
 
     firebase.auth().signInAnonymously()
